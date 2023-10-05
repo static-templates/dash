@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add Your Custom CSS Here */
+body{
+    font-family: 'Playfair Display', serif;
+    &.dark{
+        @apply bg-gray-900;
+        #darkToggle:hover{
+            .horizon{
+                border-color: #718096 !important;
+            }
+        }
+
+    }
+}
+
+.gradient-bg{
+    position: absolute;
+    width: 100%;
+    height: 28rem;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    background: linear-gradient(180deg, transparent 0, rgba(255, 255, 255, 1));
+}
+
+.prata{
+    font-family: 'Prata', serif;
+}
+
+.playfair-display{
+    font-family: 'Playfair Display', serif;
+}
+
+.post{
+    p{
+        code{
+            @apply bg-gray-200 p-1 rounded;
+        }
+    }
+    pre{
+        @apply p-0 rounded overflow-hidden;
+    }
+    img{
+        @apply rounded;
+    }
+}
+
+.dark{
+    .gradient-bg{
+        background: linear-gradient(180deg, transparent 0, rgba(26, 33, 44, 1));
+    }
+    .post{
+        @apply text-white;
+        code{
+            @apply text-gray-200 bg-gray-700 p-1 rounded;
+        }
+        pre{
+            code{
+                @apply bg-transparent;
+            }
+        }
+        p{
+            @apply text-gray-400;
+            code{
+                @apply text-gray-200 bg-gray-700 p-1 rounded;
+            }
+        }
+        h1, h2, h3, h4, h5, h6, strong, i{
+            @apply text-gray-200;
+        }
+        a{
+            @apply text-gray-100;
+        }
+    }
+}
+
+.prose pre {
+    @apply -ml-5 -mr-5 rounded-none;
+    code{
+        @apply p-5;
+    }
+}
+
+#sun{
+    transform: translate3d(0, 0px, 0);
+}
+#moon{
+    transform: translate3d(0, 0px, 0);
+}
+
+#darkToggle:hover{
+    #sun{
+        transform: translate3d(0, 1px, 0);
+    }
+    #moon{
+        transform: translate3d(0, 1px, 0);
+    }
+}
+
+
+.horizon{
+    .setting{
+        animation: 1s ease 0s 1 setting;
+    }
+    .rising{
+        animation: 1s ease 0s 1 rising;
+    }
+}
+
+@keyframes setting {
+    0% {
+        transform: translate3d(0, 10px, 0)
+    }
+
+    40% {
+        transform: translate3d(0, -2px, 0)
+    }
+
+    to {
+        transform: translate3d(0, 30px, 0)
+    }
+}
+
+@keyframes rising {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 30px, 0)
+    }
+
+    40% {
+        opacity: 1;
+        transform: translate3d(0, -2px, 0)
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 10, 0)
+    }
+}

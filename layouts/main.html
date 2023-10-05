@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+
+    <!-- Used to add dark mode right away, adding here prevents any flicker -->
+    <script>
+        if (typeof(Storage) !== "undefined") {
+            if(localStorage.getItem('dark_mode') && localStorage.getItem('dark_mode') == 'true'){
+                document.documentElement.classList.add('dark');
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        .prose img{
+            border-radius: 8px;
+        }
+        h1, h2, h3, h4, h5, h6{
+            font-family: 'Oswald', sans-serif;
+        }
+        .oswald{
+            font-family: 'Oswald', sans-serif;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    {tailwindcss}
+</head>
+<body class="antialiased ease">
+    <div class="dark:bg-gray-950">
+        <div class="relative">
+            <div class="max-w-5xl mx-auto flex flex-col justify-between items-center h-auto select-none px-6 xl:px-0 py-32 border-b border-gray-200 duration-0 dark:border-gray-700">
+                <a href="/" class="font-black text-5xl dark:text-white prata">
+                    {title}
+                </a>
+                <p class="playfair-display mt-4 text-2xl text-gray-600 dark:text-gray-500">
+                    Tutorials, Code, and Ideas
+                </p>
+            </div>
+        </div>
+
+        <div id="closeMenu" class="fixed transform translate-x-64 duration-1000 z-50 rotate-180 transition-all duration-1000 top-0 right-0 font-bold flex items-center justify-center cursor-pointer group tracking-wide bg-gray-900 dark:bg-white overflow-hidden w-12 h-12 rounded-full mr-5 mt-5 dark:text-white">
+            <svg class="w-6 h-6 text-white dark:text-gray-900 fill-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        </div>
+        <div id="menu" class="fixed w-screen h-screen top-0 left-0 flex flex-col justify-center items-center bg-gray-50 dark:bg-gray-950 z-40 transform translate-x-full ease-out transition-all duration-500 overflow-hidden text-4xl">
+            <div class="absolute w-full h-full inset-0 bg-white shadow-sm dark:bg-gray-900 top-0 right-0 block sm:hidden"></div>
+            <ForEach collection="menu">
+                    <a href="{menu.url}" class="font-black relative my-5 flex inline items-center px-3 tracking-wide dark:text-white">{menu.name}</a>
+            </ForEach> 
+        </div>
+
+        {slot}
+
+        <div id="openMenu" class="fixed transition-all duration-1000 bottom-0 right-0 font-bold flex items-center justify-center cursor-pointer group tracking-wide bg-gray-900 dark:bg-white overflow-hidden w-12 h-12 rounded-full mr-5 mb-20 dark:text-gray-900">
+            <svg viewBox="0 0 20 20" class="w-6 h-6 text-white dark:text-gray-900 fill-current"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+        </div>
+        <div id="darkToggle" class="fixed bottom-0 right-0 font-bold flex items-center justify-center cursor-pointer group tracking-wide bg-gray-900 duration-1000 transition dark:bg-white overflow-hidden w-12 h-12 rounded-full mr-5 mb-5 dark:text-white"> 
+            <div class="horizon w-12 h-12 overflow-hidden flex justify-center items-center border-transparent absolute left-0">
+                <svg class="w-6 h-6 transform transition duration-700 ease absolute fill-current text-white" id="sun" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <svg class="w-6 h-6 transform transition duration-700 ease absolute hidden fill-current text-black" id="moon" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </div>
+        </div>
+
+    </div>
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
