@@ -1,3 +1,5 @@
+### ⚠️ This template is still a work in progress
+
 # Dash Template
 
 This is a simple blog template created for [Static](https://static.devdojo.com).
@@ -7,5 +9,5 @@ This is a simple blog template created for [Static](https://static.devdojo.com).
 You can install this theme with the [static](https://www.npmjs.com/package/@devdojo/static) new command like so:
 
 ```
-static new folder-name --template=dash
+static new folder-name --dash
 ```
